@@ -6,23 +6,21 @@ const app = express();
 
 const TweetRepository = require("./repository/tweet-repository");
 
+const Comment = require("./models/comment");
+
 app.listen(3000, async () => {
   console.log("Server started");
   await connect();
   console.log("connected to mongo db");
-  //   const tweet = await Tweet.create({
-  //     content: "This is first tweet",
-  //     userEmail: "jd@admin.com",
-  //   });
-  //   console.log(tweet);
-  const tweetRepositry = new TweetRepository();
-  // const tweet = await tweetRepositry.update("64620ed8c822e4f458d4726a", {
-  //   content: "updated 6th tweet",
-  //   userEmail: "jd@admin.com",
-  // });
-  const tweet = await tweetRepositry.create({ content: "my tweet" });
-  console.log(tweet);
-  tweet.comments.push({ content: "first comment" });
+
+  const tweetRepository = new TweetRepository();
+
+  // const tweet = await tweetRepository.create({ content: "new 5th tweet" });
+  // console.log(tweet);
+  // const tweet = await tweetRepository.create({ content: "new 1st comment" });
+  const comment = await Comment.create({ content: "new 5th comment" });
+  const tweet = await tweetRepository.get("646b9b214b4a3581a3b29d70");
+  tweet.comments.push(comment);
   await tweet.save();
   console.log(tweet);
 });

@@ -10,10 +10,8 @@ const tweetSchema = new mongoose.Schema({
   }, // there is array of comments in tweet
   comments: [
     {
-      content: {
-        type: String,
-        required: true,
-      },
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment"
     },
   ],
 });
