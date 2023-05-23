@@ -1,4 +1,4 @@
-const hashtag = require("../models/hashtag");
+import { Hashtag } from "../models/hashtag";
 
 class HashtagRepository {
     async create(data) {

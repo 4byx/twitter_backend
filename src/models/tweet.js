@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose"
 
 const tweetSchema = new mongoose.Schema({
   content: {
@@ -18,6 +18,4 @@ tweetSchema.virtual('contentWithEmail').get(function process() {
   return `${this.content} \nCreated by : ${this.userEmail}`;
 })
 
-const Tweet = mongoose.model("Tweet", tweetSchema);
-
-module.exports = Tweet;
+export const Tweet = mongoose.model("Tweet", tweetSchema);
