@@ -1,5 +1,7 @@
-import mongoose from "mongoose"
+const mongoose = require("mongoose");
+const { MONGO_DB_URL } = require("./serverConfig");
+const connect = async () => {
+  await mongoose.connect(MONGO_DB_URL);
+};
 
-export const connect = async () => {
-    await mongoose.connect('mongodb+srv://abhi:abhiahuja@cluster0.upskn1s.mongodb.net/?retryWrites=true&w=majority');
-}
+module.exports = connect;

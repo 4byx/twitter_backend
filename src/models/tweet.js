@@ -1,21 +1,19 @@
-import mongoose from "mongoose"
+const mongoose = require("mongoose");
 
-const tweetSchema = new mongoose.Schema({
-  content: {
-    type: String,
-    required: true,
-    max: [250, 'Tweet cannot be more than 250 words']
+const tweetSchema = new mongoose.Schema(
+  {
+    content: {
+      type: String,
+      required: true,
+      max: [250, "Tweet cannot be more than 250 words"],
+    },
   },
-  hashtags: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Hashtag'
-    }
-  ]
-}, { timestamps: true });
+  { timestamps: true }
+);
 
-tweetSchema.virtual('contentWithEmail').get(function process() {
+tweetSchema.virtual("contentWithEmail").get(function process() {
   return `${this.content} \nCreated by : ${this.userEmail}`;
-})
+});
 
-export const Tweet = mongoose.model("Tweet", tweetSchema);
+const Tweet = mongoose.model("Tweet", tweetSchema);
+module.exports = Tweet;
