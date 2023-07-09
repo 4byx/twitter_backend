@@ -1,3 +1,4 @@
 module.exports = {
-  TweetController: require("./tweet-controllers.js"),
+  TweetController: require("./tweet-controller.js"),
+  LikeController: require("./like-controller.js"),
 };

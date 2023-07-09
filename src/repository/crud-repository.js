@@ -16,11 +16,11 @@ class CrudRepository {
   async destroy(id) {
     try {
       const result = await this.model.findByIdAndDelete({
-        id,
+        _id: id,
       });
       return result;
     } catch (error) {
-      console.log("something wrong in repository layer");
+      console.log("something wrong in delete repository layer");
       throw { error };
     }
   }

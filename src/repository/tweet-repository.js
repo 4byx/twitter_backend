@@ -9,9 +9,9 @@ class TweetRepository {
     }
   }
 
-  async get(tweetId) {
+  get(tweetId) {
     try {
-      const tweet = await Tweet.findById(tweetId);
+      const tweet = Tweet.findById(tweetId);
       return tweet;
     } catch (error) {
       console.log(error);
