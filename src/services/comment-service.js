@@ -13,7 +13,7 @@ class CommentService {
       } else if (modelType === "Comment") {
         var commentable = await this.commentRepository.get(modelId);
       } else {
-        throw { error: "Invalid model Type" };
+        throw new Error("Invalid model type");
       }
       const comment = await this.commentRepository.create({
         content: content,
